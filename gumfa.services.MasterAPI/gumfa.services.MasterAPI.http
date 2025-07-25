@@ -1,0 +1,6 @@
+@gumfa.services.MasterAPI_HostAddress = http://localhost:5081
+
+GET {{gumfa.services.MasterAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
