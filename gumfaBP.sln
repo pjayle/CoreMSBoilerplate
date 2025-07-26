@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gumfa.Web", "gumfa.Web\gumf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gumfa.GatewaySolution", "gumfa.GatewaySolution\gumfa.GatewaySolution.csproj", "{90741D3C-2D84-4B57-9E4A-CA3AA7A153FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gumfa.services.OrderAPI", "gumfa.services.OrderAPI\gumfa.services.OrderAPI.csproj", "{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{90741D3C-2D84-4B57-9E4A-CA3AA7A153FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90741D3C-2D84-4B57-9E4A-CA3AA7A153FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90741D3C-2D84-4B57-9E4A-CA3AA7A153FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
