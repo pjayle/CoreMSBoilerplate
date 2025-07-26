@@ -1,0 +1,42 @@
+﻿@model gumfa.Web.Models.DTO.OrderUpdateDto
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-white text-center">Edit Product</h1>
+        <input hidden asp-for="OrderID" />
+        <hr />
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-2">
+                        <label class="control-label pt-2" style="font-size:20px;"> Name</label>
+                    </div>
+                    <div class="col-10 pb-3">
+                        <input asp-for="OrderName" class="form-control" />
+                        <span asp-validation-for="OrderName" class="text-danger"></span>
+                    </div>
+                    <div class="col-2">
+                        <label class="control-label pt-2" style="font-size:20px;">Status</label>
+                    </div>
+                    <div class="col-10 pb-3">
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="col-5 offset-2">
+                        <a asp-action="Index" class="btn-primary btn form-control ">Back to List</a>
+                    </div>
+                    <div class="col-5">
+                        <input type="submit" value="Update" class="btn btn-success form-control" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -74,6 +74,10 @@ namespace gumfa.services.OrderAPI.Controllers
             try
             {
                 Order order = _mapper.Map<Order>(orderAddDto);
+                order.OrderBy = 1;
+                order.OrderOn = DateTime.Now;
+                order.DeliveryDate = DateTime.Now.AddDays(5);
+
                 _response.Result = await _orderService.add(order);
                 _response.Message = "ADD SUCCESS";
                 _response.IsSuccess = true;

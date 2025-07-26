@@ -12,20 +12,22 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IProductService, ProductService>();
 
-CONST.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
 CONST.AuthAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
+CONST.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
+CONST.OrderAPIBase = builder.Configuration["ServiceUrls:OrderAPI"];
 
 builder.Services.AddScoped<ITokenProvider, TokenProvider>();
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-	.AddCookie(options =>
-	{
-		options.ExpireTimeSpan = TimeSpan.FromHours(10);
-		options.LoginPath = "/Auth/Login";
-		options.AccessDeniedPath = "/Auth/AccessDenied";
-	});
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromHours(10);
+        options.LoginPath = "/Auth/Login";
+        options.AccessDeniedPath = "/Auth/AccessDenied";
+    });
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

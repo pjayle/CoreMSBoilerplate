@@ -1,4 +1,4 @@
-﻿namespace gumfa.services.OrderAPI.Models.DTO
+﻿namespace gumfa.Web.Models.DTO
 {
     public class OrderListDto
     {

@@ -6,6 +6,7 @@ namespace gumfa.services.OrderAPI.Models
     {
         [Key]
         public int OrderID { get; set; }
+        public string? OrderName { get; set; }
         public int OrderBy { get; set; }
         public DateTime OrderOn { get; set; }
         public DateTime DeliveryDate { get; set; }
