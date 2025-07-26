@@ -6,3 +6,4 @@ this project is developed to get readymade code includes below
 - CRUD application with Micro service integration as Order Master 
 - Order Master => DataTable search / filter load datatable with ajax call
 - Added Loader on every form submit
+- (Command Query Responsibility Segregation) pattern integration done with Employee Microservice
