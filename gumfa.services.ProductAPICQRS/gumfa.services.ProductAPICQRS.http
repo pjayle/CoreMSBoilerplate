@@ -1,0 +1,6 @@
+@gumfa.services.ProductAPICQRS_HostAddress = http://localhost:5025
+
+GET {{gumfa.services.ProductAPICQRS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

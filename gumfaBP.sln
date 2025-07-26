@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gumfa.GatewaySolution", "gu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gumfa.services.OrderAPI", "gumfa.services.OrderAPI\gumfa.services.OrderAPI.csproj", "{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gumfa.services.EmployeAPICQRS", "gumfa.services.ProductAPICQRS\gumfa.services.EmployeAPICQRS.csproj", "{3FECF919-5C9C-45B7-8592-80719024DA90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE5E4F05-7432-4182-B93D-DCAC5C7D9549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FECF919-5C9C-45B7-8592-80719024DA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FECF919-5C9C-45B7-8592-80719024DA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FECF919-5C9C-45B7-8592-80719024DA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FECF919-5C9C-45B7-8592-80719024DA90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
