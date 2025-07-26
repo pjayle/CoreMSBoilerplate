@@ -127,7 +127,13 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// THIS IS USED FOR RESTRICT XSS ATTACKS FROM API BODY
+app.UseAntiXssMiddleware();
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 app.MapControllers();
+
 
 ApplyMigration();
 
