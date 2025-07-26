@@ -1,8 +1,10 @@
 ﻿using gumfa.Web.Models;
 using gumfa.Web.Models.DTO;
 using gumfa.Web.Service;
+using gumfa.Web.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace gumfa.Web.Controllers
 {
@@ -16,21 +18,62 @@ namespace gumfa.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<OrderListDto>? list = new();
+            //List<OrderListDto>? list = new();
 
-            APIResponseDto? response = await _OrderService.GetAllOrdersAsync();
+            //APIResponseDto? response = await _OrderService.GetAllOrdersAsync();
 
+            //if (response != null && response.IsSuccess)
+            //{
+            //    list = JsonConvert.DeserializeObject<List<OrderListDto>>(Convert.ToString(response.Result));
+            //}
+            //else
+            //{
+            //    TempData["error"] = response?.Message;
+            //}
+
+            //return View(list);
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult GetAll(string status)
+        {
+            IEnumerable<OrderListDto> list;
+            string userId = "";
+            if (!User.IsInRole(CONST.RoleAdmin))
+            {
+                userId = User.Claims.Where(u => u.Type == JwtRegisteredClaimNames.Sub)?.FirstOrDefault()?.Value;
+            }
+            APIResponseDto response = _OrderService.GetAllOrdersAsync().GetAwaiter().GetResult();
             if (response != null && response.IsSuccess)
             {
                 list = JsonConvert.DeserializeObject<List<OrderListDto>>(Convert.ToString(response.Result));
+                switch (status)
+                {
+                    case "created":
+                        list = list.Where(u => u.Status == CONST.ORDER_Status_Created.ToLower());
+                        break;
+                    case "approved":
+                        list = list.Where(u => u.Status == CONST.ORDER_Status_Approved.ToLower());
+                        break;
+                    case "readyforpickup":
+                        list = list.Where(u => u.Status == CONST.ORDER_Status_ReadyForPickup.ToLower());
+                        break;
+                    case "cancelled":
+                        list = list.Where(u => u.Status == CONST.ORDER_Status_Cancelled.ToLower() || u.Status == CONST.ORDER_Status_Refunded.ToLower());
+                        break;
+                    default:
+                        break;
+                }
             }
             else
             {
-                TempData["error"] = response?.Message;
+                list = new List<OrderListDto>();
             }
-
-            return View(list);
+            return Json(new { data = list.OrderByDescending(u => u.OrderID) });
         }
+
         [HttpGet]
         public async Task<IActionResult> Create()
         {

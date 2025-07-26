@@ -22,11 +22,12 @@
 
         public const string TokenCookie = "JWTToken";
 
-        public const string Status_Pending = "Pending";
-        public const string Status_Approved = "Approved";
-        public const string Status_ReadyForPickup = "ReadyForPickup";
-        public const string Status_Completed = "Completed";
-        public const string Status_Refunded = "Refunded";
-        public const string Status_Cancelled = "Cancelled";
+        public const string ORDER_Status_Created = "Created";
+        public const string ORDER_Status_Pending = "Pending";
+        public const string ORDER_Status_Approved = "Approved";
+        public const string ORDER_Status_ReadyForPickup = "ReadyForPickup";
+        public const string ORDER_Status_Completed = "Completed";
+        public const string ORDER_Status_Refunded = "Refunded";
+        public const string ORDER_Status_Cancelled = "Cancelled";
     }
 }

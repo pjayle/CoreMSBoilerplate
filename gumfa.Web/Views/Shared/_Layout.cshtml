@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] .Net Core Boiler Plate Code</title>
     @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
@@ -102,9 +103,16 @@
         <main role="main" class="pb-3">
             @RenderBody()
             <partial name="_Notifications" />
+            <div id="loader-overlay" class="d-none position-fixed top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1040;"></div>
+
+            <div id="loader" class="d-none position-fixed top-50 start-50 translate-middle text-primary" style="z-index: 1051;">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - gumfa.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -112,7 +120,20 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function showLoader() {
+            $('#loader-overlay').removeClass('d-none');
+            $('#loader').removeClass('d-none');
+        }
+
+        function hideLoader() {
+            $('#loader-overlay').addClass('d-none');
+            $('#loader').addClass('d-none');
+        }
+        // showLoader();
+    </script>
 </body>
 </html>

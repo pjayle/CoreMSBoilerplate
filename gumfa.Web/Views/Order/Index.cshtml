@@ -1,56 +1,90 @@
-﻿@model IEnumerable<gumfa.Web.Models.DTO.OrderListDto>
+﻿@* @model IEnumerable<gumfa.Web.Models.DTO.OrderListDto> *@
 
+﻿@{
+
+    var status = Context.Request.Query["status"];
+    var created = "";
+    var approved = "";
+    var readyforpickup = "";
+    var cancelled = "";
+    var all = "";
+
+    switch (status)
+    {
+        case "created":
+            created = "active text-white bg-primary";
+            break;
+        case "approved":
+            approved = "active text-white bg-secondary";
+            break;
+        case "readyforpickup":
+            readyforpickup = "active text-white bg-secondary";
+            break;
+        case "cancelled":
+            cancelled = "active text-white bg-secondary";
+            break;
+        default:
+            all = "active text-white bg-secondary";
+            break;
+    }
+}
 <div class="container">
     <div class="card shadow border-0 mt-4">
         <div class="card-header bg-secondary bg-gradient ml-0 py-3">
             <div class="row">
-                <div class="col-12 text-center">
+                <div class="col-6">
                     <h1 class="text-white">Order List</h1>
+                </div>
+                <div class="col-6">
+                    <div class="text-end">
+                        <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-square"></i> Create New Order</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-body p-4">
-            <div class="row pb-3">
-                <div class="col-6">
+
+        <div class="card shadow border-0 mt-4">
+            <div class="card-header bg-secondary bg-gradient ml-0 py-3 d-flex justify-content-between">
+                <div class="row">
+                    @* <h1 class="text-white">Order List</h1> *@
                 </div>
-                <div class="col-6 text-end">
-                    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-square"></i> Create New Order</a>
-                </div>
+                <ul class="list-group list-group-horizontal-sm pt-2">
+                    <a style="text-decoration:none" asp-controller="Order" asp-action="Index" asp-route-status="created">
+                    <li class="list-group-item @created">Created</li>
+                    </a>
+                    <a style="text-decoration:none" asp-controller="Order" asp-action="Index" asp-route-status="approved">
+                    <li class="list-group-item @approved">Approved</li>
+                    </a>
+                    <a style="text-decoration:none" asp-controller="Order" asp-action="Index" asp-route-status="readyforpickup">
+                    <li class="list-group-item @readyforpickup">Ready for Pikcup</li>
+                    </a>
+                    <a style="text-decoration:none" asp-controller="Order" asp-action="Index" asp-route-status="cancelled">
+                    <li class="list-group-item @cancelled">Cancelled</li>
+                    </a>
+                    <a style="text-decoration:none" asp-controller="Order" asp-action="Index" asp-route-status="all">
+                    <li class="list-group-item @all">All</li>
+                    </a>
+                </ul>
+
             </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.ToList())
-                    {
-                        <tr class="table-active">
-                            <td>
-                                @item.OrderName
-                            </td>
-                            <td>
-                                @item.Status
-                            </td>
-                            <td>
-                                <a class="btn btn-success" asp-action="Edit" asp-route-orderId="@item.OrderID">
-                                    <i class="bi bi-pencil-square"></i>
-                                </a>
-                                <a class="btn btn-danger" asp-action="Delete" asp-route-orderId="@item.OrderID">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td>
+            <div class="card-body p-4">
+                <table id="tblData" class="table table-bordered table-striped pt-3" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+@section Scripts {
+    <script src="~/js/order.js"></script>
+}
