@@ -2,3 +2,5 @@ this project is developed to get readymade code includes below
 - Authentication/Authorization/Jwt Token
 - MicroServices
 - CRUD application with Micro service integration as Product Master 
+- Gateway integration (OCELOT) => Web application sent ALL request to 7777 port (gatway app) => route to 7001 = (product microservice), 7002 (order microservice) 
+- CRUD application with Micro service integration as Order Master 
